@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+
+<mapper namespace ="stu">
+
+    <resultMap id="Student" type="Student">
+        <id property="ID" column="ID"/>
+        <result property="SName" column="SName"/>
+        <result property="QQ" column="QQ"/>
+        <result property="Style" column="Style"/>
+        <result property="Time" column="Time"/>
+        <result property="School" column="School"/>
+        <result property="SNumber" column="SNumber"/>
+        <result property="Link" column="Link"/>
+        <result property="Dream" column="Dream"/>
+        <result property="FBro" column="FBro"/>
+        <result property="YBro" column="YBro"/>
+        <result property="WhereKnow" column="WhereKnow"/>
+
+        <result property="create_at" column="create_at"/>
+        <result property="update_at" column="update_at"/>
+    </resultMap>
+
+
+
+    <!--select语句-->
+    <select id = "selectStudent" parameterType = "int" resultType = "Student">
+        select * from businesstable where ID = #{ID}
+    </select>
+
+    <select id="getStudentListByName" parameterType="String" resultMap="Student">
+        select * from businesstable where SName = #{SName}
+    </select>
+
+    <!--insert语句-->
+    <insert id = "insertStudent" parameterType = "Student" useGeneratedKeys="true" keyProperty="ID">
+        insert into businesstable(SName,QQ,Style,Time,School,SNumber,Link,Dream,FBro,YBro,WhereKnow,create_at)
+        values(#{SName},#{QQ},#{Style},#{Time},#{School},#{SNumber},#{Link},#{Dream},#{FBro},#{YBro},#{WhereKnow},#{create_at})
+        <selectKey keyProperty="ID" order="AFTER" resultType="Integer">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <!--delete语句-->
+    <delete id="deleteStudent" parameterType="int">
+        delete from businesstable where ID = #{ID}
+    </delete>
+
+    <!--update语句-->
+    <update id="updateStudent" parameterType="Student">
+        update businesstable set SName=#{SName},QQ=#{QQ},Style=#{Style},Time=#{Time},School=#{School},SNumber=#{SNumber},
+        Link=#{Link},Dream=#{Dream},FBro=#{FBro},YBro=#{YBro},WhereKnow=#{WhereKnow},update_at=#{update_at} where ID=#{ID}
+    </update>
+
+</mapper>

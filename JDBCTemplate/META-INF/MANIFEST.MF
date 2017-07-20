@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Class-Path: spring-jdbc-4.3.9.RELEASE.jar spring-tx-4.3.9.RELEASE.jar 
+ mysql-connector-java-5.1.42.jar hamcrest-core-1.3.jar spring-core-4.3
+ .9.RELEASE.jar spring-expression-4.3.9.RELEASE.jar spring-context-4.3
+ .9.RELEASE.jar junit-4.12.jar commons-logging-1.2.jar spring-beans-4.
+ 3.9.RELEASE.jar spring-aop-4.3.9.RELEASE.jar
+Main-Class: MainApp
+

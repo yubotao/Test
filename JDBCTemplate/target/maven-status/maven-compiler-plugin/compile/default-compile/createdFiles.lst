@@ -1,0 +1,4 @@
+dao\StudentJDBCDAO.class
+dao\StudentJDBCTemplate.class
+domain\Student.class
+dao\StudentMapper.class
